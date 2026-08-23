@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Get creator content — {{ site.brand.name }}{% endblock %}
+
+{% block content %}
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">For brands</p>
+    <h1>Tell us the product.</h1>
+    <p class="lede" style="margin-top:18px">
+      We come back within 48 hours with a shortlist of beauty creators matched to it,
+      plus a fixed price. No retainer, no long contract.
+    </p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:36px">
+  <div class="wrap">
+    <form class="form" method="POST" action="{{ url_for('leads.submit_brand') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+      <div class="form__row form__row--split">
+        <div>
+          <label for="brand_name">Brand name *</label>
+          <input type="text" id="brand_name" name="brand_name" required>
+        </div>
+        <div>
+          <label for="website">Website</label>
+          <input type="url" id="website" name="website" placeholder="https://">
+        </div>
+      </div>
+
+      <div class="form__row form__row--split">
+        <div>
+          <label for="contact_name">Your name *</label>
+          <input type="text" id="contact_name" name="contact_name" required>
+        </div>
+        <div>
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+
+      <div class="form__row">
+        <label for="product">What product do you want content for? *</label>
+        <textarea id="product" name="product" required
+                  placeholder="Product name, what it does, who it is for"></textarea>
+      </div>
+
+      <div class="form__row form__row--split">
+        <div>
+          <label for="package">Which package?</label>
+          <select id="package" name="package">
+            <option value="">Not sure yet</option>
+            {% for pack in site.packages['items'] %}
+              <option value="{{ pack.name }}">{{ pack.name }} — {{ pack.price }} ({{ pack.unit }})</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div>
+          <label for="timeline">When do you need it?</label>
+          <input type="text" id="timeline" name="timeline" placeholder="Within a month">
+        </div>
+      </div>
+
+      <div class="form__row">
+        <label for="message">Anything else</label>
+        <textarea id="message" name="message"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn--accent btn--lg">Request a shortlist</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

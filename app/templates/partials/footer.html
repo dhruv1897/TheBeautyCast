@@ -1,0 +1,15 @@
+{# Site footer. Shown on every page. Links come from site.json. #}
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div>
+      <div class="wordmark">{{ site.brand.name }}<span>.</span></div>
+      <p style="color:var(--paper-60);margin-top:8px">{{ site.footer.note }}</p>
+    </div>
+    <nav>
+      {% for link in site.footer.links %}
+        <a href="{{ link.url }}">{{ link.label }}</a>
+      {% endfor %}
+      <a href="mailto:{{ site.brand.email }}">{{ site.brand.email }}</a>
+    </nav>
+  </div>
+</footer>

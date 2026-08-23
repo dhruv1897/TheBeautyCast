@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Thank you — {{ site.brand.name }}{% endblock %}
+
+{% block content %}
+<section class="section" style="text-align:center">
+  <div class="wrap">
+    <p class="eyebrow">Received</p>
+    {% if who == "creator" %}
+      <h1 style="font-size:clamp(30px,5vw,52px);max-width:18ch;margin:14px auto 0">
+        You're in the queue.
+      </h1>
+      <p class="lede" style="margin:18px auto 28px">
+        We review applications every Monday. If your work fits the cast you'll hear
+        from us, and we'll be in touch separately if a paid brand job matches what you do.
+      </p>
+    {% else %}
+      <h1 style="font-size:clamp(30px,5vw,52px);max-width:18ch;margin:14px auto 0">
+        We'll come back within 48 hours.
+      </h1>
+      <p class="lede" style="margin:18px auto 28px">
+        You'll get a shortlist of creators matched to your product, with a fixed price
+        and a delivery date. No obligation.
+      </p>
+    {% endif %}
+    <a class="btn btn--ink btn--lg" href="{{ url_for('main.index') }}">Back to home</a>
+  </div>
+</section>
+{% endblock %}

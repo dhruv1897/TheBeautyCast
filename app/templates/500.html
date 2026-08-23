@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Something went wrong — {{ site.brand.name }}{% endblock %}
+{% block content %}
+<section class="section" style="text-align:center">
+  <div class="wrap">
+    <p class="eyebrow">500</p>
+    <h1 style="font-size:clamp(30px,5vw,52px);margin:14px 0 18px">Something broke on our side.</h1>
+    <p class="lede" style="margin:0 auto 26px">Try again in a moment, or email {{ site.brand.email }}.</p>
+    <a class="btn btn--ink btn--lg" href="{{ url_for('main.index') }}">Back to home</a>
+  </div>
+</section>
+{% endblock %}

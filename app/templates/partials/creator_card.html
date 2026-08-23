@@ -1,0 +1,22 @@
+{# One creator card in the weekly cast rail.
+
+   The SVG below is a placeholder portrait. To use a real photo, replace
+   the <svg> block with:
+     <img class="card__img" src="{{ url_for('static', filename='img/' ~ creator.photo) }}" alt="{{ creator.handle }}">
+   and add a "photo" key to that creator in app/content/site.json.
+#}
+<article class="card">
+  <svg class="card__img" viewBox="0 0 200 250" role="img" aria-label="Portrait placeholder for {{ creator.handle }}">
+    <rect width="200" height="250" fill="currentColor" opacity="0.10"/>
+    <circle cx="100" cy="96" r="41" fill="currentColor" opacity="0.30"/>
+    <path d="M34 250c0-40 30-70 66-70s66 30 66 70z" fill="currentColor" opacity="0.30"/>
+  </svg>
+  <div class="card__body">
+    <div class="card__no">No. {{ creator.no }} — {{ creator.niche }}</div>
+    <div class="card__handle">{{ creator.handle }}</div>
+    <div class="card__meta">
+      <span>{{ creator.style }}</span>
+      <span>{{ creator.followers }}</span>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,163 @@
+{# ------------------------------------------------------------------
+   THE LANDING PAGE
+
+   All the words on this page come from app/content/site.json.
+   To change the text, edit that file — not this one.
+   Edit this file only when you want to change the page structure.
+
+   Sections, in order:
+     1. Hero
+     2. This week's cast
+     3. Two doors (creators / brands)
+     4. Packages
+     5. Submit a creator
+   ------------------------------------------------------------------ #}
+{% extends "base.html" %}
+
+{% block content %}
+
+{# --- 1. HERO ---------------------------------------------------- #}
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow rise">{{ site.hero.eyebrow }}</p>
+
+    <h1 class="hero__title rise rise--1">
+      {{ site.hero.headline_before }}
+      <em>{{ site.hero.headline_emphasis }}</em>
+      {{ site.hero.headline_after }}
+    </h1>
+
+    <p class="hero__sub rise rise--2">{{ site.hero.subhead }}</p>
+
+    <div class="hero__cta rise rise--3">
+      <a class="btn btn--accent btn--lg" href="{{ url_for('main.apply_page') }}">
+        {{ site.hero.primary_cta }}
+      </a>
+      <a class="btn btn--outline btn--lg" href="{{ url_for('main.brands_page') }}">
+        {{ site.hero.secondary_cta }}
+      </a>
+    </div>
+
+    <div class="stats rise rise--4">
+      {% for stat in site.stats %}
+        <div class="stats__item">
+          <span class="stats__value">{{ stat.value }}</span>
+          <span class="stats__label">{{ stat.label }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{# --- 2. THIS WEEK'S CAST ----------------------------------------- #}
+<section class="section section--dark" style="padding-top:0">
+  <div class="wrap">
+    <div class="cast__head">
+      <div>
+        <p class="eyebrow">{{ site.featured.eyebrow }}</p>
+        <h2>{{ site.featured.heading }}</h2>
+      </div>
+      <a class="btn btn--outline" href="{{ url_for('main.apply_page') }}">Join the cast</a>
+    </div>
+
+    <div class="cast__rail">
+      {% for creator in site.featured.creators %}
+        {% include "partials/creator_card.html" %}
+      {% endfor %}
+    </div>
+
+    <p class="note">{{ site.featured.note }}</p>
+  </div>
+</section>
+
+
+{# --- 3. TWO DOORS ------------------------------------------------- #}
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow">{{ site.doors.eyebrow }}</p>
+
+    <div class="doors">
+      {# Creator door #}
+      <div class="door">
+        <p class="eyebrow">{{ site.doors.creator.label }}</p>
+        <h3>{{ site.doors.creator.heading }}</h3>
+        <p>{{ site.doors.creator.intro }}</p>
+        <ul class="door__list">
+          {% for point in site.doors.creator.points %}
+            <li><i>{{ "%02d"|format(loop.index) }}</i><span>{{ point }}</span></li>
+          {% endfor %}
+        </ul>
+        <a class="btn btn--ink" href="{{ url_for('main.apply_page') }}">
+          {{ site.doors.creator.cta }}
+        </a>
+      </div>
+
+      {# Brand door #}
+      <div class="door door--fill">
+        <p class="eyebrow">{{ site.doors.brand.label }}</p>
+        <h3>{{ site.doors.brand.heading }}</h3>
+        <p>{{ site.doors.brand.intro }}</p>
+        <ul class="door__list">
+          {% for point in site.doors.brand.points %}
+            <li><i>{{ "%02d"|format(loop.index) }}</i><span>{{ point }}</span></li>
+          {% endfor %}
+        </ul>
+        <a class="btn btn--accent" href="{{ url_for('main.brands_page') }}">
+          {{ site.doors.brand.cta }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{# --- 4. PACKAGES --------------------------------------------------- #}
+<section class="section section--dark" id="packages">
+  <div class="wrap">
+    <p class="eyebrow">{{ site.packages.eyebrow }}</p>
+    <h2 class="packages__intro" style="font-size:clamp(28px,4.4vw,48px);margin-top:14px">
+      {{ site.packages.heading }}
+    </h2>
+    <p class="lede" style="margin-top:18px">{{ site.packages.intro }}</p>
+
+    <div class="packages__grid">
+      {% for pack in site.packages['items'] %}
+        <div class="pack {% if pack.featured %}pack--featured{% endif %}">
+          {% if pack.featured %}<div class="pack__flag">Most popular</div>{% endif %}
+          <div class="pack__name">{{ pack.name }}</div>
+          <div class="pack__price">{{ pack.price }}</div>
+          <div class="pack__unit">{{ pack.unit }}</div>
+          <ul class="pack__list">
+            {% for item in pack.includes %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+          <a class="btn {% if pack.featured %}btn--accent{% else %}btn--outline{% endif %}"
+             href="{{ url_for('main.brands_page') }}?package={{ pack.name|urlencode }}">
+            Start here
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <p class="packages__foot">{{ site.packages.footnote }}</p>
+  </div>
+</section>
+
+
+{# --- 5. SUBMIT A CREATOR -------------------------------------------- #}
+<section class="section" style="text-align:center">
+  <div class="wrap">
+    <p class="eyebrow">{{ site.submit.eyebrow }}</p>
+    <h2 style="font-size:clamp(24px,3.8vw,38px);max-width:20ch;margin:14px auto 0">
+      {{ site.submit.heading }}
+    </h2>
+    <p class="lede" style="margin:14px auto 26px">{{ site.submit.intro }}</p>
+    <a class="btn btn--ink btn--lg" href="{{ url_for('main.apply_page') }}#nominate">
+      {{ site.submit.cta }}
+    </a>
+  </div>
+</section>
+
+{% endblock %}

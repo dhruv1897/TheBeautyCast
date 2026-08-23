@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Apply to be featured — {{ site.brand.name }}{% endblock %}
+
+{% block content %}
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">For creators</p>
+    <h1>Tell us what you make.</h1>
+    <p class="lede" style="margin-top:18px">
+      Free to apply. We feature the work we love, always credited, and contact you
+      when a paid brand job fits what you do.
+    </p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:36px">
+  <div class="wrap">
+    <form class="form" method="POST" action="{{ url_for('leads.submit_creator') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+      <div class="form__row form__row--split">
+        <div>
+          <label for="name">Your name *</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+
+      <div class="form__row form__row--split">
+        <div>
+          <label for="instagram">Instagram handle *</label>
+          <input type="text" id="instagram" name="instagram" placeholder="@yourhandle" required>
+        </div>
+        <div>
+          <label for="tiktok">TikTok handle <span class="hint">(optional)</span></label>
+          <input type="text" id="tiktok" name="tiktok" placeholder="@yourhandle">
+        </div>
+      </div>
+
+      <div class="form__row form__row--split">
+        <div>
+          <label for="niche">What do you make? *</label>
+          <select id="niche" name="niche" required>
+            <option value="">Choose one</option>
+            <option>Nails</option>
+            <option>Makeup</option>
+            <option>Skincare</option>
+            <option>Hair</option>
+            <option>Beauty hacks</option>
+          </select>
+        </div>
+        <div>
+          <label for="followers">Followers <span class="hint">(rough number)</span></label>
+          <input type="number" id="followers" name="followers" min="0" placeholder="8400">
+        </div>
+      </div>
+
+      <div class="form__row form__row--split">
+        <div>
+          <label for="location">Where are you based?</label>
+          <input type="text" id="location" name="location" placeholder="City, country">
+        </div>
+        <div>
+          <label for="typical_rate">Your usual rate per video</label>
+          <input type="text" id="typical_rate" name="typical_rate" placeholder="$150, or not sure yet">
+        </div>
+      </div>
+
+      <div class="form__row">
+        <label for="content_type">What kind of videos do you make?</label>
+        <input type="text" id="content_type" name="content_type" placeholder="Tutorials, GRWM, product reviews">
+      </div>
+
+      <div class="form__row" id="nominate">
+        <label for="notes">Anything else <span class="hint">(or nominate another creator here)</span></label>
+        <textarea id="notes" name="notes"></textarea>
+      </div>
+
+      {# These two checkboxes are the commercially important part of the form. #}
+      <div class="form__check">
+        <input type="checkbox" id="permission_to_feature" name="permission_to_feature" value="yes">
+        <label for="permission_to_feature">
+          You may feature clips of my content with credit and a tag. I can ask you to remove it at any time.
+        </label>
+      </div>
+
+      <div class="form__check" style="border-bottom:1px solid var(--ink-12);margin-bottom:26px">
+        <input type="checkbox" id="open_to_paid_work" name="open_to_paid_work" value="yes">
+        <label for="open_to_paid_work">
+          Contact me about paid brand work. Rates always agreed before anything is booked.
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn--accent btn--lg">Send application</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

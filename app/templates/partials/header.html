@@ -1,0 +1,12 @@
+{# Site header. Shown on every page. #}
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="wordmark" href="{{ url_for('main.index') }}">
+      {{ site.brand.name }}<span>.</span>
+    </a>
+    <nav class="site-header__nav">
+      <a class="btn btn--outline" href="{{ url_for('main.apply_page') }}">For creators</a>
+      <a class="btn btn--accent" href="{{ url_for('main.brands_page') }}">For brands</a>
+    </nav>
+  </div>
+</header>

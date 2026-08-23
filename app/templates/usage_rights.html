@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Usage rights and privacy — {{ site.brand.name }}{% endblock %}
+
+{% block content %}
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Plain language</p>
+    <h1>Usage rights and privacy</h1>
+  </div>
+</section>
+
+<section class="section" style="padding-top:36px">
+  <div class="wrap" style="max-width:62ch">
+    <h3 style="margin-bottom:10px">Featuring creator content</h3>
+    <p style="color:var(--ink-80);margin-bottom:26px">
+      We only feature clips from creators who have given permission. Every clip carries
+      the creator's handle on screen and the creator is tagged in the post. We use short
+      excerpts under our own commentary, never a full repost. Any creator can ask us to
+      remove their content at any time and we will do it without argument.
+    </p>
+
+    <h3 style="margin-bottom:10px">Paid campaign content</h3>
+    <p style="color:var(--ink-80);margin-bottom:26px">
+      Usage rights for paid work are agreed per campaign and written into the brief
+      before filming starts. Organic rights and paid advertising rights are priced
+      separately. Creators are paid the rate agreed up front, in full.
+    </p>
+
+    <h3 style="margin-bottom:10px">What we store</h3>
+    <p style="color:var(--ink-80);margin-bottom:26px">
+      When you submit a form we store the details you gave us so we can contact you
+      about features and campaigns. We do not sell your data or pass it to anyone
+      outside a campaign you have agreed to. Email
+      <a href="mailto:{{ site.brand.email }}" style="color:var(--accent)">{{ site.brand.email }}</a>
+      and we will delete your record.
+    </p>
+
+    <p style="color:var(--ink-60);font-size:14px">
+      This page is written to be readable rather than legally exhaustive. Have a lawyer
+      review it before you sign your first significant brand contract.
+    </p>
+  </div>
+</section>
+{% endblock %}
