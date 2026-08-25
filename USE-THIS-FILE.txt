@@ -1,0 +1,78 @@
+TheBeautyCast — WHICH FILE FOR WHAT
+===================================
+Keep this next to the folder. One line per job.
+
+
+LOGO
+----
+Website header, dark background ....... 01/LOGO-MASTER.svg
+Website header, white background ...... 01/LOGO-MASTER-light.svg
+Email signature .......................  01/LOGO-MASTER-tagline-light.svg
+Deck / PDF cover ......................  01/LOGO-MASTER-stacked.svg
+Business card, dark ...................  01/LOGO-MASTER.svg
+Business card, white ..................  01/LOGO-MASTER-light.svg
+Merch, foil, embroidery, stamp ........  01/LOGO-MASTER-1c-cream.svg  (dark)
+                                         01/LOGO-MASTER-1c-ink.svg    (light)
+Anywhere you need PNG not SVG .........  same name + "-2000.png" in 01/
+
+
+WATERMARK  (on reels and posts)
+---------
+Dark or busy footage ..................  01/WATERMARK-lockup-cream-1400.png
+Bright / white footage ................  01/WATERMARK-lockup-ink-1400.png
+Tight corner, dark footage ............  01/WATERMARK-mark-cream-600.png
+Tight corner, bright footage ..........  01/WATERMARK-mark-ink-600.png
+
+  Size:      lockup 22-26% of frame width · mark alone 9-11%
+  Position:  bottom-left · 6% in from left · 12% up from bottom
+  Opacity:   do not change it, it is baked in
+  Rule:      same size and same spot on EVERY post, forever
+
+
+INTRO VIDEO
+-----------
+Reels, TikTok, Stories ................  02/intro-vertical-1080x1920.mp4
+Feed post (square) ....................  02/intro-square-1080x1080.mp4
+YouTube, website hero .................  02/intro-landscape-1920x1080.mp4
+Email signature, web preview ..........  02/intro-480.gif
+
+  3.0s · 30fps · no audio · last 5 frames are static so the cut is clean
+
+
+SOCIAL
+------
+Instagram profile picture .............  03/png/mark-signal-avatar-1024.png
+Same, orange version ..................  03/png/mark-signal-avatar-accent-1024.png
+Profile picture, max legibility .......  03/png/monogram-bc-avatar-1024.png
+Reel masthead badge ...................  03/svg/masthead-badge.svg
+Reel closing frame ....................  03/svg/closing-frame.svg
+                                         03/png/closing-frame-1080.png
+"Featured by" badge for creators ......  03/svg/emblem-seal.svg
+
+
+WEBSITE ICONS
+-------------
+Browser tab, 16px .....................  03/svg/favicon-16.svg
+Browser tab, 24px and up ..............  03/svg/favicon.svg
+Phone home-screen icon ................  03/png/favicon-180.png
+Fallback .ico source ..................  03/png/favicon-32.png
+
+
+COLOURS
+-------
+Ink #0C0B0E · Cream #FAF7F3 · Muted #A8A29B
+Accent #FF7A45  -> DARK backgrounds only
+Accent #C2572C  -> light backgrounds (already used in every -light file)
+
+Type: Inter. Free from Google Fonts.
+
+
+NEVER
+-----
+Recolour it · outline it · add a gradient · stretch it · rotate it ·
+put #FF7A45 on white · move the watermark between posts.
+
+
+Folders:  01 = 01-logo-and-watermark
+          02 = 02-intro-video
+          03 = 03-supporting-marks
