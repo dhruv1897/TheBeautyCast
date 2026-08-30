@@ -1,22 +1,31 @@
-{# One creator card in the weekly cast rail.
+{# One creator card in the cast rail.
 
-   The SVG below is a placeholder portrait. To use a real photo, replace
-   the <svg> block with:
-     <img class="card__img" src="{{ url_for('static', filename='img/' ~ creator.photo) }}" alt="{{ creator.handle }}">
-   and add a "photo" key to that creator in app/content/site.json.
+   TO USE A REAL CLIP OR PHOTO:
+   1. Put the file in app/static/img/creators/
+   2. Add "photo": "maya.jpg" to that creator in site.json
+   3. Replace the <svg> below with:
+      <img src="{{ url_for('static', filename='img/creators/' ~ creator.photo) }}"
+           alt="{{ creator.handle }}" loading="lazy">
+   Crop to 9:12 and keep files under 200 KB.
 #}
-<article class="card">
-  <svg class="card__img" viewBox="0 0 200 250" role="img" aria-label="Portrait placeholder for {{ creator.handle }}">
-    <rect width="200" height="250" fill="currentColor" opacity="0.10"/>
-    <circle cx="100" cy="96" r="41" fill="currentColor" opacity="0.30"/>
-    <path d="M34 250c0-40 30-70 66-70s66 30 66 70z" fill="currentColor" opacity="0.30"/>
-  </svg>
-  <div class="card__body">
-    <div class="card__no">No. {{ creator.no }} — {{ creator.niche }}</div>
-    <div class="card__handle">{{ creator.handle }}</div>
-    <div class="card__meta">
-      <span>{{ creator.style }}</span>
-      <span>{{ creator.followers }}</span>
+<article class="creator">
+  <div class="creator__media">
+    <span class="creator__badge">{{ creator.platform }}</span>
+    <svg viewBox="0 0 180 240" role="img" aria-label="Placeholder for {{ creator.handle }}">
+      <rect width="180" height="240" fill="currentColor" opacity="0.05"/>
+      <circle cx="90" cy="88" r="36" fill="currentColor" opacity="0.14"/>
+      <path d="M28 240c0-36 27-64 62-64s62 28 62 64z" fill="currentColor" opacity="0.14"/>
+    </svg>
+    <div class="creator__play">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FAF7F3" stroke-width="1.6">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M10 8.5l6 3.5-6 3.5z" fill="#FAF7F3" stroke="none"/>
+      </svg>
     </div>
+  </div>
+  <div class="creator__body">
+    <p class="creator__no">No. {{ creator.no }} — {{ creator.niche }}</p>
+    <p class="creator__handle">{{ creator.handle }}</p>
+    <p class="creator__meta"><span>{{ creator.style }}</span><span>{{ creator.followers }}</span></p>
   </div>
 </article>

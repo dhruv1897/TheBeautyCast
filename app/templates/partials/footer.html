@@ -1,15 +1,28 @@
-{# Site footer. Shown on every page. Links come from site.json. #}
-<footer class="site-footer">
-  <div class="wrap site-footer__inner">
-    <div>
-      <div class="wordmark">{{ site.brand.name }}<span>.</span></div>
-      <p style="color:var(--paper-60);margin-top:8px">{{ site.footer.note }}</p>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__in">
+      <div>
+        <a class="logo" href="{{ url_for('main.index') }}">
+          <img class="on-light" src="{{ url_for('static', filename='img/brand/logo-light-bg.svg') }}" alt="{{ site.brand.name }}">
+          <img class="on-dark"  src="{{ url_for('static', filename='img/brand/logo-dark-bg.svg') }}"  alt="{{ site.brand.name }}">
+        </a>
+        <p class="footer__note">{{ site.footer.note }}</p>
+      </div>
+      <nav class="footer__links">
+        {% for link in site.footer.links %}
+          <a href="{{ link.url }}">{{ link.label }}</a>
+        {% endfor %}
+      </nav>
     </div>
-    <nav>
-      {% for link in site.footer.links %}
-        <a href="{{ link.url }}">{{ link.label }}</a>
-      {% endfor %}
-      <a href="mailto:{{ site.brand.email }}">{{ site.brand.email }}</a>
-    </nav>
+    <div class="footer__bottom">
+      <span>&copy; {{ current_year }} {{ site.brand.name }}</span>
+      <span>
+        <a href="mailto:{{ site.brand.email }}">{{ site.brand.email }}</a>
+        &nbsp;·&nbsp;
+        <a href="https://instagram.com/{{ site.brand.instagram }}">Instagram</a>
+        &nbsp;·&nbsp;
+        <a href="https://tiktok.com/@{{ site.brand.tiktok }}">TikTok</a>
+      </span>
+    </div>
   </div>
 </footer>

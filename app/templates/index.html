@@ -1,46 +1,41 @@
 {# ------------------------------------------------------------------
-   THE LANDING PAGE
+   HOME / LANDING PAGE
 
-   All the words on this page come from app/content/site.json.
-   To change the text, edit that file — not this one.
-   Edit this file only when you want to change the page structure.
+   All words come from app/content/site.json — edit that file, not this
+   one. Edit this file only to change the page STRUCTURE.
 
-   Sections, in order:
-     1. Hero
-     2. This week's cast
-     3. Two doors (creators / brands)
-     4. Packages
-     5. Submit a creator
+   Sections in order:
+     1. Hero (with the 3D signal field behind it)
+     2. Three pillars — creators / brands / everyone
+     3. This week's cast
+     4. The Beauty Room  (public content, the reach engine)
+     5. Packages         (brand revenue)
+     6. Advertise        (advertiser revenue)
+     7. Closing
    ------------------------------------------------------------------ #}
 {% extends "base.html" %}
 
 {% block content %}
 
-{# --- 1. HERO ---------------------------------------------------- #}
-<section class="hero">
+{# --- 1. HERO ----------------------------------------------------- #}
+<section class="hero depth">
+  {% include "partials/rings.html" %}
   <div class="wrap">
-    <p class="eyebrow rise">{{ site.hero.eyebrow }}</p>
+    <div class="hero__in">
+      <p class="eyebrow reveal">{{ site.hero.eyebrow }}</p>
+      <h1 class="reveal" data-delay="1">{{ site.hero.headline }}</h1>
+      <p class="hero__sub reveal" data-delay="2">{{ site.hero.subhead }}</p>
 
-    <h1 class="hero__title rise rise--1">
-      {{ site.hero.headline_before }}
-      <em>{{ site.hero.headline_emphasis }}</em>
-      {{ site.hero.headline_after }}
-    </h1>
-
-    <p class="hero__sub rise rise--2">{{ site.hero.subhead }}</p>
-
-    <div class="hero__cta rise rise--3">
-      <a class="btn btn--accent btn--lg" href="{{ url_for('main.apply_page') }}">
-        {{ site.hero.primary_cta }}
-      </a>
-      <a class="btn btn--outline btn--lg" href="{{ url_for('main.brands_page') }}">
-        {{ site.hero.secondary_cta }}
-      </a>
+      <div class="hero__cta reveal" data-delay="3">
+        <a class="btn btn--primary" href="{{ url_for('main.apply_page') }}">{{ site.hero.primary_cta }}</a>
+        <a class="btn btn--ghost" href="{{ url_for('main.brands_page') }}">{{ site.hero.secondary_cta }}</a>
+      </div>
+      <p class="hero__micro reveal" data-delay="4">{{ site.hero.micro }}</p>
     </div>
 
-    <div class="stats rise rise--4">
+    <div class="stats reveal" data-delay="4">
       {% for stat in site.stats %}
-        <div class="stats__item">
+        <div>
           <span class="stats__value">{{ stat.value }}</span>
           <span class="stats__label">{{ stat.label }}</span>
         </div>
@@ -50,113 +45,176 @@
 </section>
 
 
-{# --- 2. THIS WEEK'S CAST ----------------------------------------- #}
-<section class="section section--dark" style="padding-top:0">
+{# --- 2. THREE PILLARS --------------------------------------------- #}
+<section class="section section--raised" id="creators">
   <div class="wrap">
-    <div class="cast__head">
-      <div>
-        <p class="eyebrow">{{ site.featured.eyebrow }}</p>
-        <h2>{{ site.featured.heading }}</h2>
-      </div>
-      <a class="btn btn--outline" href="{{ url_for('main.apply_page') }}">Join the cast</a>
+    <div class="section__head reveal">
+      <p class="eyebrow">{{ site.pillars.eyebrow }}</p>
+      <h2>{{ site.pillars.heading }}</h2>
     </div>
 
-    <div class="cast__rail">
-      {% for creator in site.featured.creators %}
+    <div class="pillars">
+      {% for item in site.pillars['items'] %}
+        <article class="pillar tilt reveal" data-delay="{{ loop.index }}">
+          <div class="pillar__icon">
+            {% if item.icon == 'signal' %}
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"/>
+                <path d="M16.2 7.8a6 6 0 1 0 0 8.4"/>
+                <path d="M19.5 4.5a10.5 10.5 0 1 0 0 15"/>
+              </svg>
+            {% elif item.icon == 'target' %}
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/>
+                <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+              </svg>
+            {% else %}
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"/>
+                <path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/>
+              </svg>
+            {% endif %}
+          </div>
+          <p class="pillar__label">{{ item.label }}</p>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.text }}</p>
+          <a class="btn btn--ghost btn--sm" href="{{ item.url }}">{{ item.cta }} &rarr;</a>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{# --- 3. THIS WEEK'S CAST ------------------------------------------- #}
+<section class="section">
+  <div class="wrap">
+    <div class="rail__head reveal">
+      <div>
+        <p class="eyebrow">{{ site.cast.eyebrow }}</p>
+        <h2 style="margin-top:12px">{{ site.cast.heading }}</h2>
+      </div>
+      <a class="btn btn--ghost btn--sm" href="{{ url_for('main.apply_page') }}">{{ site.cast.cta }} &rarr;</a>
+    </div>
+
+    <div class="rail reveal" data-delay="1">
+      {% for creator in site.cast.creators %}
         {% include "partials/creator_card.html" %}
       {% endfor %}
     </div>
 
-    <p class="note">{{ site.featured.note }}</p>
+    <p class="note">{{ site.cast.note }}</p>
   </div>
 </section>
 
 
-{# --- 3. TWO DOORS ------------------------------------------------- #}
-<section class="section">
+{# --- 4. THE BEAUTY ROOM -------------------------------------------- #}
+<section class="section section--raised" id="beauty-room">
   <div class="wrap">
-    <p class="eyebrow">{{ site.doors.eyebrow }}</p>
+    <div class="section__head reveal">
+      <p class="eyebrow">{{ site.beauty_room.eyebrow }}</p>
+      <h2>{{ site.beauty_room.heading }}</h2>
+      <p class="lede" style="margin-top:12px">{{ site.beauty_room.intro }}</p>
+    </div>
 
-    <div class="doors">
-      {# Creator door #}
-      <div class="door">
-        <p class="eyebrow">{{ site.doors.creator.label }}</p>
-        <h3>{{ site.doors.creator.heading }}</h3>
-        <p>{{ site.doors.creator.intro }}</p>
-        <ul class="door__list">
-          {% for point in site.doors.creator.points %}
-            <li><i>{{ "%02d"|format(loop.index) }}</i><span>{{ point }}</span></li>
-          {% endfor %}
-        </ul>
-        <a class="btn btn--ink" href="{{ url_for('main.apply_page') }}">
-          {{ site.doors.creator.cta }}
-        </a>
-      </div>
+    <div class="guides">
+      {% for article in site.beauty_room.articles %}
+        <article class="guide tilt reveal" data-delay="{{ loop.index }}">
+          <div class="guide__top">
+            <span class="guide__cat">{{ article.category }}</span>
+            <span class="guide__time">{{ article.read_time }} read</span>
+          </div>
+          <h3>{{ article.title }}</h3>
+          <p>{{ article.excerpt }}</p>
+          <div class="steps">
+            {% for step in article.steps %}
+              <span class="step">{{ step }}</span>
+              {% if not loop.last %}<span class="step-arrow">&rarr;</span>{% endif %}
+            {% endfor %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
 
-      {# Brand door #}
-      <div class="door door--fill">
-        <p class="eyebrow">{{ site.doors.brand.label }}</p>
-        <h3>{{ site.doors.brand.heading }}</h3>
-        <p>{{ site.doors.brand.intro }}</p>
-        <ul class="door__list">
-          {% for point in site.doors.brand.points %}
-            <li><i>{{ "%02d"|format(loop.index) }}</i><span>{{ point }}</span></li>
-          {% endfor %}
-        </ul>
-        <a class="btn btn--accent" href="{{ url_for('main.brands_page') }}">
-          {{ site.doors.brand.cta }}
-        </a>
-      </div>
+    {# Advertiser inventory: an in-content slot where it earns most. #}
+    <div class="ad-banner reveal">
+      Sponsor slot — your brand here, beside guides your customers are already reading.
+      <a href="{{ url_for('main.brands_page') }}?package=Guide+Sponsor" style="color:var(--accent);font-weight:600">Enquire &rarr;</a>
     </div>
   </div>
 </section>
 
 
-{# --- 4. PACKAGES --------------------------------------------------- #}
-<section class="section section--dark" id="packages">
+{# --- 5. PACKAGES ---------------------------------------------------- #}
+<section class="section" id="brands">
   <div class="wrap">
-    <p class="eyebrow">{{ site.packages.eyebrow }}</p>
-    <h2 class="packages__intro" style="font-size:clamp(28px,4.4vw,48px);margin-top:14px">
-      {{ site.packages.heading }}
-    </h2>
-    <p class="lede" style="margin-top:18px">{{ site.packages.intro }}</p>
+    <div class="section__head reveal">
+      <p class="eyebrow">{{ site.packages.eyebrow }}</p>
+      <h2>{{ site.packages.heading }}</h2>
+      <p class="lede" style="margin-top:12px">{{ site.packages.intro }}</p>
+    </div>
 
-    <div class="packages__grid">
+    <div class="packs">
       {% for pack in site.packages['items'] %}
-        <div class="pack {% if pack.featured %}pack--featured{% endif %}">
-          {% if pack.featured %}<div class="pack__flag">Most popular</div>{% endif %}
-          <div class="pack__name">{{ pack.name }}</div>
-          <div class="pack__price">{{ pack.price }}</div>
-          <div class="pack__unit">{{ pack.unit }}</div>
+        <div class="pack {% if pack.featured %}pack--featured{% endif %} reveal" data-delay="{{ loop.index }}">
+          {% if pack.featured %}<span class="pack__flag">Most popular</span>{% endif %}
+          <p class="pack__name">{{ pack.name }}</p>
+          <p class="pack__price">{{ pack.price }}</p>
+          <p class="pack__unit">{{ pack.unit }}</p>
           <ul class="pack__list">
-            {% for item in pack.includes %}
-              <li>{{ item }}</li>
-            {% endfor %}
+            {% for line in pack.includes %}<li>{{ line }}</li>{% endfor %}
           </ul>
-          <a class="btn {% if pack.featured %}btn--accent{% else %}btn--outline{% endif %}"
-             href="{{ url_for('main.brands_page') }}?package={{ pack.name|urlencode }}">
-            Start here
-          </a>
+          <a class="btn {% if pack.featured %}btn--primary{% else %}btn--ghost{% endif %}"
+             href="{{ url_for('main.brands_page') }}?package={{ pack.name|urlencode }}">Start here</a>
+        </div>
+      {% endfor %}
+    </div>
+    <p class="packs__foot">{{ site.packages.footnote }}</p>
+  </div>
+</section>
+
+
+{# --- 6. ADVERTISE ---------------------------------------------------- #}
+<section class="section section--sunken" id="advertise">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">{{ site.advertise.eyebrow }}</p>
+      <h2>{{ site.advertise.heading }}</h2>
+      <p class="lede" style="margin-top:12px">{{ site.advertise.intro }}</p>
+    </div>
+
+    <div class="ads">
+      {% for slot in site.advertise.slots %}
+        <div class="ad reveal" data-delay="{{ loop.index }}">
+          <p class="ad__name">{{ slot.name }}</p>
+          <p class="ad__price">{{ slot.price }}</p>
+          <p class="ad__unit">{{ slot.unit }}</p>
+          <ul class="ad__list">
+            {% for line in slot.includes %}<li>{{ line }}</li>{% endfor %}
+          </ul>
         </div>
       {% endfor %}
     </div>
 
-    <p class="packages__foot">{{ site.packages.footnote }}</p>
+    <p class="note" style="margin-top:22px">{{ site.advertise.note }}</p>
+    <a class="btn btn--primary" style="margin-top:20px" href="{{ url_for('main.brands_page') }}?package=Advertising">
+      {{ site.advertise.cta }}
+    </a>
   </div>
 </section>
 
 
-{# --- 5. SUBMIT A CREATOR -------------------------------------------- #}
-<section class="section" style="text-align:center">
-  <div class="wrap">
-    <p class="eyebrow">{{ site.submit.eyebrow }}</p>
-    <h2 style="font-size:clamp(24px,3.8vw,38px);max-width:20ch;margin:14px auto 0">
-      {{ site.submit.heading }}
-    </h2>
-    <p class="lede" style="margin:14px auto 26px">{{ site.submit.intro }}</p>
-    <a class="btn btn--ink btn--lg" href="{{ url_for('main.apply_page') }}#nominate">
-      {{ site.submit.cta }}
-    </a>
+{# --- 7. CLOSING ------------------------------------------------------- #}
+<section class="section closing depth">
+  {% include "partials/rings.html" %}
+  <div class="wrap closing__in">
+    <p class="eyebrow reveal">{{ site.closing.eyebrow }}</p>
+    <h2 class="reveal" data-delay="1">{{ site.closing.heading }}</h2>
+    <p class="lede reveal" data-delay="2">{{ site.closing.intro }}</p>
+    <div class="closing__cta reveal" data-delay="3">
+      <a class="btn btn--primary" href="{{ url_for('main.apply_page') }}">{{ site.closing.creator_cta }}</a>
+      <a class="btn btn--ghost" href="{{ url_for('main.brands_page') }}">{{ site.closing.brand_cta }}</a>
+    </div>
   </div>
 </section>
 

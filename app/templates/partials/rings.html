@@ -1,0 +1,32 @@
+{# ------------------------------------------------------------------
+   THE SIGNAL FIELD — the site's 3D background layer.
+
+   This is the logo taken apart: a centre dot inside concentric open
+   arcs. Each layer has data-depth, which main.js uses for parallax.
+   Higher depth moves further, so it reads as closer to the viewer.
+
+   Drop {% include "partials/rings.html" %} inside any element that has
+   position:relative and the "depth" class.
+   ------------------------------------------------------------------ #}
+<div class="rings" aria-hidden="true">
+  <svg viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g data-depth="0.25">
+      <g class="ring-c">
+        <path d="M683 259A340 340 0 1 0 683 541" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity="0.30"/>
+      </g>
+    </g>
+    <g data-depth="0.5">
+      <g class="ring-b">
+        <path d="M598 314A240 240 0 1 0 598 486" stroke="currentColor" stroke-width="9" stroke-linecap="round" opacity="0.45"/>
+      </g>
+    </g>
+    <g data-depth="0.85">
+      <g class="ring-a">
+        <path d="M513 370A140 140 0 1 0 513 430" stroke="currentColor" stroke-width="11" stroke-linecap="round" opacity="0.6"/>
+      </g>
+    </g>
+    <g data-depth="1.2">
+      <circle class="ring-dot" cx="400" cy="400" r="26" fill="currentColor" opacity="0.75"/>
+    </g>
+  </svg>
+</div>

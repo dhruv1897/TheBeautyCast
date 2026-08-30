@@ -5,6 +5,8 @@ Add a new page by copying one of these functions and creating a matching
 template in app/templates/.
 """
 
+from datetime import datetime
+
 from flask import Blueprint, render_template
 
 from app.services import load_content
@@ -13,9 +15,12 @@ main_bp = Blueprint("main", __name__)
 
 
 @main_bp.app_context_processor
-def inject_content():
-    """Make `site` available inside every template automatically."""
-    return {"site": load_content()}
+def inject_globals():
+    """Make `site` and `current_year` available in every template."""
+    return {
+        "site": load_content(),
+        "current_year": datetime.now().year,
+    }
 
 
 @main_bp.route("/")

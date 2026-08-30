@@ -1,76 +1,202 @@
 {
-  "_comment": "EDIT THIS FILE TO CHANGE THE WEBSITE TEXT. No HTML knowledge needed. Save the file, refresh the browser. Keep the quotes and commas exactly as they are.",
-
+  "_comment": "ALL WEBSITE TEXT LIVES HERE. Edit, save, refresh the browser. No HTML needed. Keep quotes and commas exactly as they are.",
   "brand": {
     "name": "The Beauty Cast",
-    "tagline": "Beauty creator discovery and content production",
+    "tagline": "We cast beauty creators. And we broadcast them.",
     "email": "hello@thebeautycast.com",
     "instagram": "thebeautycast",
     "tiktok": "thebeautycast"
   },
-
+  "nav": [
+    {
+      "label": "Creators",
+      "url": "/#creators"
+    },
+    {
+      "label": "Brands",
+      "url": "/#brands"
+    },
+    {
+      "label": "Beauty Room",
+      "url": "/#beauty-room"
+    },
+    {
+      "label": "Advertise",
+      "url": "/#advertise"
+    }
+  ],
   "hero": {
     "eyebrow": "Nails · Makeup · Skincare · Hair",
-    "headline_before": "We find beauty creators",
-    "headline_emphasis": "before",
-    "headline_after": "everyone else does.",
-    "subhead": "Every week we feature creators worth following. Brands hire them through us for content that actually sells.",
-    "primary_cta": "Apply to be featured",
-    "secondary_cta": "Get creator content"
+    "headline": "Where beauty creators get found.",
+    "subhead": "We feature the creators worth watching, connect them with brands who pay, and show everyone else how to actually use what they buy.",
+    "primary_cta": "I'm a creator",
+    "secondary_cta": "I'm a brand",
+    "micro": "Free for creators. Always."
   },
-
   "stats": [
-    { "value": "42", "label": "Creators in network" },
-    { "value": "3", "label": "Campaigns delivered" },
-    { "value": "48h", "label": "Shortlist turnaround" }
+    {
+      "value": "42",
+      "label": "Creators in the cast"
+    },
+    {
+      "value": "3",
+      "label": "Campaigns delivered"
+    },
+    {
+      "value": "48h",
+      "label": "Shortlist turnaround"
+    },
+    {
+      "value": "4",
+      "label": "Platforms we post to"
+    }
   ],
-
-  "featured": {
-    "eyebrow": "This week's cast",
-    "heading": "Six we found in August",
-    "note": "Placeholder cards. Real creator photos drop into these frames once permission is granted.",
-    "creators": [
-      { "no": "01", "niche": "Nails",    "handle": "@mayadoesnails",   "style": "Chrome & minimal",  "followers": "8.4K" },
-      { "no": "02", "niche": "Makeup",   "handle": "@ivy.blends",      "style": "Soft glam",         "followers": "21K"  },
-      { "no": "03", "niche": "Skincare", "handle": "@noor.routine",    "style": "Barrier repair",    "followers": "13K"  },
-      { "no": "04", "niche": "Hair",     "handle": "@taliacurls",      "style": "Curl routines",     "followers": "34K"  },
-      { "no": "05", "niche": "Hacks",    "handle": "@bex.beautyhacks", "style": "60-second fixes",   "followers": "6.1K" },
-      { "no": "06", "niche": "Nails",    "handle": "@zara.sets",       "style": "DIY press-ons",     "followers": "4.7K" }
+  "pillars": {
+    "eyebrow": "Three reasons people come here",
+    "heading": "One page, three audiences.",
+    "items": [
+      {
+        "icon": "signal",
+        "label": "For creators",
+        "title": "Reach, then paid work.",
+        "text": "We feature your reels across Instagram, TikTok and our own channels, always credited and tagged. When a brand budget matches what you make, we bring it to you.",
+        "cta": "Join the cast",
+        "url": "/apply"
+      },
+      {
+        "icon": "target",
+        "label": "For brands",
+        "title": "Creator content that sells.",
+        "text": "Tell us the product. We match creators, agree the rates, and deliver edited vertical video ready for your feed and your ads. Fixed price, ten working days.",
+        "cta": "Get a shortlist",
+        "url": "/brands"
+      },
+      {
+        "icon": "book",
+        "label": "For everyone",
+        "title": "How to actually use it.",
+        "text": "Real routines from real creators. What the product does, why it matters, and the order to apply it in. No jargon, no fifty-step routines nobody follows.",
+        "cta": "Open the Beauty Room",
+        "url": "/#beauty-room"
+      }
     ]
   },
-
-  "doors": {
-    "eyebrow": "Two ways in",
-    "creator": {
-      "label": "For creators",
-      "heading": "Get found. Get paid.",
-      "intro": "Tell us what you make. We feature the work we love, always credited, and call you when a brand budget fits.",
-      "points": [
-        "Featured on the weekly cast, always tagged",
-        "We ask permission before we post anything",
-        "Opt in to paid work and set your own rate",
-        "Always free. We never charge creators."
-      ],
-      "cta": "Apply to be featured"
-    },
-    "brand": {
-      "label": "For brands",
-      "heading": "Beauty content, made to order.",
-      "intro": "Tell us the product. We match creators, handle the rates, and deliver edited video ready for your feed and your ads.",
-      "points": [
-        "Creators matched to your product, not just your budget",
-        "We negotiate rates and usage rights",
-        "Edited and captioned, ready to publish",
-        "Delivered in 10 working days"
-      ],
-      "cta": "Request a shortlist"
-    }
+  "cast": {
+    "eyebrow": "This week's cast",
+    "heading": "Creators we're backing right now",
+    "note": "Placeholder cards. Real creator clips replace these as permissions come in.",
+    "cta": "See the full roster",
+    "creators": [
+      {
+        "no": "01",
+        "niche": "Nails",
+        "handle": "@mayadoesnails",
+        "style": "Chrome & minimal",
+        "followers": "8.4K",
+        "platform": "Instagram"
+      },
+      {
+        "no": "02",
+        "niche": "Makeup",
+        "handle": "@ivy.blends",
+        "style": "Soft glam",
+        "followers": "21K",
+        "platform": "TikTok"
+      },
+      {
+        "no": "03",
+        "niche": "Skincare",
+        "handle": "@noor.routine",
+        "style": "Barrier repair",
+        "followers": "13K",
+        "platform": "Instagram"
+      },
+      {
+        "no": "04",
+        "niche": "Hair",
+        "handle": "@taliacurls",
+        "style": "Curl routines",
+        "followers": "34K",
+        "platform": "TikTok"
+      },
+      {
+        "no": "05",
+        "niche": "Hacks",
+        "handle": "@bex.beautyhacks",
+        "style": "60-second fixes",
+        "followers": "6.1K",
+        "platform": "Instagram"
+      },
+      {
+        "no": "06",
+        "niche": "Nails",
+        "handle": "@zara.sets",
+        "style": "DIY press-ons",
+        "followers": "4.7K",
+        "platform": "TikTok"
+      }
+    ]
   },
-
+  "beauty_room": {
+    "eyebrow": "The Beauty Room",
+    "heading": "Know what you're putting on your face.",
+    "intro": "Short, honest guides on what a product does and how to use it. This is the part of the site that brings people back — and the part search engines find first.",
+    "cta": "Read all guides",
+    "articles": [
+      {
+        "category": "Skincare",
+        "title": "The order to apply your products in",
+        "excerpt": "Thinnest to thickest. That single rule fixes most routines, and it explains why your serum stopped working when you switched the steps around.",
+        "read_time": "4 min",
+        "steps": [
+          "Cleanse",
+          "Treat",
+          "Moisturise",
+          "Protect"
+        ]
+      },
+      {
+        "category": "Hair",
+        "title": "Heat protectant: what it does and does not do",
+        "excerpt": "It raises the temperature your hair can survive. It does not make heat damage impossible, and the number on the bottle matters more than the brand.",
+        "read_time": "3 min",
+        "steps": [
+          "Damp hair",
+          "Even spray",
+          "Comb through",
+          "Then heat"
+        ]
+      },
+      {
+        "category": "Nails",
+        "title": "Why your press-ons pop off in three days",
+        "excerpt": "Almost always prep, not glue. Four minutes of surface work is the difference between three days and three weeks.",
+        "read_time": "5 min",
+        "steps": [
+          "Push cuticles",
+          "Buff shine off",
+          "Dehydrate",
+          "Glue thin"
+        ]
+      },
+      {
+        "category": "Makeup",
+        "title": "Reading an ingredients list without a chemistry degree",
+        "excerpt": "The first five ingredients are most of the bottle. Everything after fragrance is usually under one percent.",
+        "read_time": "6 min",
+        "steps": [
+          "Top five",
+          "Find actives",
+          "Check the %",
+          "Ignore the rest"
+        ]
+      }
+    ]
+  },
   "packages": {
-    "eyebrow": "Start small",
+    "eyebrow": "For brands",
     "heading": "Test creator content before you spend real money.",
-    "intro": "Most beauty brands do not need a campaign. They need proof that creator video sells the product. Start with three videos and find out.",
+    "intro": "Most beauty brands don't need a campaign. They need proof that creator video sells the product. Start with three videos and find out.",
     "items": [
       {
         "name": "Test Pack",
@@ -78,11 +204,11 @@
         "unit": "3 videos",
         "featured": false,
         "includes": [
-          "3 beauty creators matched to your product",
+          "3 creators matched to your product",
           "One 15–30s vertical video each",
           "Edited, captioned, ready to post",
-          "Organic usage rights included",
-          "Delivered in 10 working days"
+          "Organic usage rights",
+          "10 working days"
         ]
       },
       {
@@ -91,12 +217,12 @@
         "unit": "5 videos",
         "featured": true,
         "includes": [
-          "5 beauty creators matched to your product",
+          "5 creators matched to your product",
           "One 15–30s vertical video each",
           "Two hook variations on the best performer",
           "Edited, captioned, ready to post",
-          "Organic and paid ad usage rights",
-          "Delivered in 10 working days"
+          "Organic and paid ad rights",
+          "10 working days"
         ]
       },
       {
@@ -105,30 +231,85 @@
         "unit": "10 videos / month",
         "featured": false,
         "includes": [
-          "10 videos a month from a rotating cast",
+          "10 videos a month, rotating cast",
           "Priority creator matching",
-          "Hook and format testing each month",
+          "Hook and format testing",
           "Full usage rights",
           "Monthly performance summary"
         ]
       }
     ],
-    "footnote": "Prices are per delivery, not retainers. Creator fees are included."
+    "footnote": "Creator fees included. No retainer, no lock-in."
   },
-
-  "submit": {
-    "eyebrow": "Help us look",
-    "heading": "Know a beauty creator nobody has found yet?",
-    "intro": "Send us a handle. If the work is good, they are on next week's cast.",
-    "cta": "Submit a creator"
+  "advertise": {
+    "eyebrow": "Advertise with us",
+    "heading": "Put your brand in front of a beauty audience.",
+    "intro": "Small beauty and wellness businesses can book a slot on this page and across our social channels. Limited inventory, so it never turns into a banner farm.",
+    "cta": "Request the media kit",
+    "slots": [
+      {
+        "name": "Featured Brand",
+        "price": "$150",
+        "unit": "per month",
+        "includes": [
+          "Logo and link in this section",
+          "One story mention per month",
+          "Listed in the Beauty Room sidebar"
+        ]
+      },
+      {
+        "name": "Guide Sponsor",
+        "price": "$300",
+        "unit": "per guide",
+        "includes": [
+          "Your brand on one Beauty Room guide",
+          "Named in the matching reel",
+          "Permanent placement, not a rotation"
+        ]
+      },
+      {
+        "name": "Cast Partner",
+        "price": "$500",
+        "unit": "per month",
+        "includes": [
+          "Top placement on every page",
+          "One dedicated post per month",
+          "First look at new creators in your category"
+        ]
+      }
+    ],
+    "note": "We only take advertisers our audience would actually use. If it doesn't fit, we'll say no."
   },
-
+  "closing": {
+    "eyebrow": "Get in touch",
+    "heading": "Creator, brand, or just curious?",
+    "intro": "Tell us which one you are and we'll point you at the right place.",
+    "creator_cta": "I make content",
+    "brand_cta": "I sell products"
+  },
   "footer": {
     "note": "We feature creators with permission and credit. Always.",
     "links": [
-      { "label": "For creators", "url": "/apply" },
-      { "label": "For brands", "url": "/brands" },
-      { "label": "Usage rights", "url": "/usage-rights" }
+      {
+        "label": "For creators",
+        "url": "/apply"
+      },
+      {
+        "label": "For brands",
+        "url": "/brands"
+      },
+      {
+        "label": "Beauty Room",
+        "url": "/#beauty-room"
+      },
+      {
+        "label": "Advertise",
+        "url": "/#advertise"
+      },
+      {
+        "label": "Usage rights",
+        "url": "/usage-rights"
+      }
     ]
   }
 }

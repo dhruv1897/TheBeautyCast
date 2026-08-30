@@ -1,31 +1,67 @@
 {# ------------------------------------------------------------------
    Base layout. Every page extends this file.
 
-   To create a new page:
-     1. Make a file like about.html
-     2. Start it with:  {% extends "base.html" %}
-     3. Put your content inside {% block content %} ... {% endblock %}
-     4. Add a route in app/controllers/main.py
+   New page in three steps:
+     1. Create yourpage.html starting with {% extends "base.html" %}
+     2. Put content inside {% block content %} ... {% endblock %}
+     3. Add a route in app/controllers/main.py
    ------------------------------------------------------------------ #}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  {# --- Theme applied BEFORE paint. Without this, dark-mode visitors
+         get a white flash on every page load. --- #}
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("bc-theme");
+        if (saved) {
+          document.documentElement.setAttribute("data-theme", saved);
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (e) {}
+    })();
+  </script>
+
   <title>{% block title %}{{ site.brand.name }} — {{ site.brand.tagline }}{% endblock %}</title>
   <meta name="description" content="{% block description %}{{ site.hero.subhead }}{% endblock %}">
 
-  {# Social sharing preview #}
+  {# Search + social preview #}
+  <link rel="canonical" href="{{ request.url }}">
+  <meta property="og:site_name" content="{{ site.brand.name }}">
   <meta property="og:title" content="{{ site.brand.name }}">
   <meta property="og:description" content="{{ site.hero.subhead }}">
   <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#FFFFFF">
+
+  <link rel="icon" href="{{ url_for('static', filename='img/brand/favicon.svg') }}" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  {# Tells Google this is a real organisation, which helps the brand
+     panel appear when someone searches "thebeautycast". #}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ site.brand.name }}",
+    "description": "{{ site.hero.subhead }}",
+    "email": "{{ site.brand.email }}",
+    "sameAs": [
+      "https://instagram.com/{{ site.brand.instagram }}",
+      "https://tiktok.com/@{{ site.brand.tiktok }}"
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
