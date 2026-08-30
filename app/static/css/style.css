@@ -437,3 +437,78 @@ p { color: var(--text-muted); }
   .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
 }
+
+
+/* --- 15. BEAUTY ROOM ARTICLES ------------------------------------------------
+   Styles for the guide index and individual guide pages.
+   The reading column is capped at 68 characters — longer lines measurably
+   hurt reading speed, and this is the page people actually read.
+   --------------------------------------------------------------------------- */
+
+.guide { text-decoration: none; color: inherit; }
+.guide__more {
+  display: inline-block; margin-top: 18px;
+  font-size: 13px; font-weight: 600; color: var(--accent);
+}
+
+.article__head { position: relative; overflow: hidden; padding: 34px 0 40px; }
+.article__head-in { position: relative; z-index: 2; max-width: 760px; }
+.article__head h1 { margin: 14px 0 14px; max-width: 22ch; }
+
+.crumbs { display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; color: var(--text-muted); margin-bottom: 18px; }
+.crumbs a { color: var(--text-muted); }
+.crumbs a:hover { color: var(--accent); }
+
+.article__lede { font-size: 18px; max-width: 60ch; }
+.article__meta { display: flex; gap: 8px; font-size: 13px; color: var(--text-muted); margin-top: 18px; }
+
+.article__body { max-width: 720px; padding-top: 8px; padding-bottom: var(--section-y); }
+.article__intro { font-size: 17px; color: var(--text); margin-bottom: 40px; max-width: 68ch; }
+
+.prose { margin-bottom: 40px; max-width: 68ch; }
+.prose h2 { margin-bottom: 14px; }
+.prose p { margin-bottom: 14px; }
+
+/* Numbered steps — the part most readers came for, so it sits high. */
+.article__steps {
+  background: var(--bg-raised); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 28px 26px; margin-bottom: 44px;
+}
+.article__steps h2 { margin-bottom: 20px; }
+.steplist { list-style: none; }
+.steplist__item { display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); }
+.steplist__item:first-child { border-top: none; padding-top: 0; }
+.steplist__num {
+  flex: 0 0 34px; height: 34px; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent);
+  display: grid; place-items: center; font-size: 13px; font-weight: 700;
+}
+.steplist h3 { margin-bottom: 6px; }
+.steplist p { font-size: 15px; }
+.steplist__tip {
+  margin-top: 8px; padding-left: 12px;
+  border-left: 2px solid var(--accent);
+  font-size: 14px; font-style: italic;
+}
+
+/* FAQs use <details>, so they open and close with no JavaScript. */
+.faq { border-top: 1px solid var(--line); padding: 4px 0; }
+.faq:last-child { border-bottom: 1px solid var(--line); }
+.faq summary {
+  cursor: pointer; padding: 14px 0; font-weight: 600; font-size: 15.5px;
+  list-style: none; display: flex; justify-content: space-between; gap: 16px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--accent); font-size: 20px; line-height: 1; }
+.faq[open] summary::after { content: "\2212"; }
+.faq p { padding-bottom: 16px; font-size: 15px; }
+
+.article__cta {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 20px; padding: 26px; margin: 8px 0 44px;
+  background: var(--accent-soft); border: 1px solid var(--accent); border-radius: var(--radius);
+}
+.article__cta h3 { margin: 8px 0 6px; }
+.article__cta p { font-size: 15px; }
+
+.article__related h2 { margin-bottom: 20px; }

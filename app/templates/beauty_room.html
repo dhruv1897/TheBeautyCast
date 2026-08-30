@@ -1,0 +1,46 @@
+{# Index of every Beauty Room guide. Cards link to real pages. #}
+{% extends "base.html" %}
+
+{% block title %}The Beauty Room — guides from {{ site.brand.name }}{% endblock %}
+{% block description %}Short, honest beauty guides: what a product does, why it matters, and how to use it. Skincare, hair, nails and makeup.{% endblock %}
+
+{% block content %}
+<section class="page-head depth">
+  {% include "partials/rings.html" %}
+  <div class="wrap page-head__in">
+    <p class="eyebrow">{{ site.beauty_room.eyebrow }}</p>
+    <h1>{{ site.beauty_room.heading }}</h1>
+    <p class="lede">{{ site.beauty_room.intro }}</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:44px">
+  <div class="wrap">
+    <div class="guides">
+      {% for guide in guides %}
+        <a class="guide tilt reveal" data-delay="{{ loop.index }}"
+           href="{{ url_for('main.guide', slug=guide.slug) }}">
+          <div class="guide__top">
+            <span class="guide__cat">{{ guide.category }}</span>
+            <span class="guide__time">{{ guide.read_time }} read</span>
+          </div>
+          <h2 style="font-size:var(--fs-h3);margin-bottom:10px">{{ guide.title }}</h2>
+          <p>{{ guide.excerpt }}</p>
+          <div class="steps">
+            {% for chip in guide.chips %}
+              <span class="step">{{ chip }}</span>
+              {% if not loop.last %}<span class="step-arrow">&rarr;</span>{% endif %}
+            {% endfor %}
+          </div>
+          <span class="guide__more">Read the guide &rarr;</span>
+        </a>
+      {% endfor %}
+    </div>
+
+    <div class="ad-banner reveal">
+      Sponsor slot — your brand beside guides your customers are already reading.
+      <a href="{{ url_for('main.brands_page') }}?package=Guide+Sponsor" style="color:var(--accent);font-weight:600">Enquire &rarr;</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -77,3 +77,57 @@ def test_brand_enquiry_is_saved(client):
 
 def test_export_is_locked_without_token(client):
     assert client.get("/export/creators").status_code == 403
+
+
+# ---------------------------------------------------------------------
+# Beauty Room
+# ---------------------------------------------------------------------
+def test_beauty_room_index_loads(client):
+    response = client.get("/beauty-room")
+    assert response.status_code == 200
+
+
+def test_every_guide_page_loads(client):
+    """Catches a broken or malformed guide JSON file."""
+    from app.services import load_guides
+    from app import create_app
+
+    app = create_app("testing")
+    with app.app_context():
+        slugs = [g["slug"] for g in load_guides()]
+
+    assert len(slugs) >= 1, "No guides found in app/content/guides/"
+    for slug in slugs:
+        assert client.get(f"/beauty-room/{slug}").status_code == 200, slug
+
+
+def test_unknown_guide_returns_404(client):
+    assert client.get("/beauty-room/not-a-real-guide").status_code == 404
+
+
+def test_guide_has_valid_structured_data(client):
+    """Broken JSON-LD is worse than none - Google ignores the whole page."""
+    import json
+    import re
+
+    response = client.get("/beauty-room/what-order-to-apply-skincare")
+    blocks = re.findall(
+        r'<script type="application/ld\+json">(.*?)</script>',
+        response.data.decode(),
+        re.S,
+    )
+    assert blocks, "No structured data found on the guide page"
+    for block in blocks:
+        json.loads(block)   # raises if malformed
+
+
+def test_sitemap_lists_the_guides(client):
+    body = client.get("/sitemap.xml").data.decode()
+    assert "<urlset" in body
+    assert "beauty-room/what-order-to-apply-skincare" in body
+
+
+def test_robots_points_at_the_sitemap(client):
+    body = client.get("/robots.txt").data.decode()
+    assert "Sitemap:" in body
+    assert "Disallow: /export/" in body

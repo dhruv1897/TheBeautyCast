@@ -1,0 +1,170 @@
+{# ------------------------------------------------------------------
+   A SINGLE BEAUTY ROOM GUIDE
+
+   This template is the site's main search-traffic page. Three things
+   here exist purely for Google and should not be removed:
+
+   1. The JSON-LD block at the bottom (HowTo + FAQPage). This is what
+      can put your steps and questions directly in search results.
+   2. The breadcrumb, which shows the site structure in results.
+   3. A unique title and meta description per guide, pulled from the
+      guide's own JSON file.
+
+   The content itself comes from app/content/guides/<slug>.json.
+   ------------------------------------------------------------------ #}
+{% extends "base.html" %}
+
+{% block title %}{{ guide.title }} — {{ site.brand.name }}{% endblock %}
+{% block description %}{{ guide.meta_description }}{% endblock %}
+
+{% block content %}
+
+<article class="article">
+
+  {# --- Header --- #}
+  <header class="article__head depth">
+    {% include "partials/rings.html" %}
+    <div class="wrap article__head-in">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="{{ url_for('main.index') }}">Home</a>
+        <span>/</span>
+        <a href="{{ url_for('main.beauty_room') }}">Beauty Room</a>
+        <span>/</span>
+        <span>{{ guide.category }}</span>
+      </nav>
+
+      <span class="guide__cat">{{ guide.category }}</span>
+      <h1>{{ guide.title }}</h1>
+      <p class="article__lede">{{ guide.excerpt }}</p>
+
+      <div class="article__meta">
+        <span>{{ guide.read_time }} read</span>
+        <span>·</span>
+        <span>Updated {{ guide.updated }}</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap article__body">
+
+    {# --- Intro --- #}
+    <p class="article__intro">{{ guide.intro }}</p>
+
+    {# --- The steps, up front. Most readers want these and leave. --- #}
+    <section class="article__steps" aria-label="The steps">
+      <h2>The short version</h2>
+      <ol class="steplist">
+        {% for step in guide.steps %}
+          <li class="steplist__item">
+            <span class="steplist__num">{{ "%02d"|format(loop.index) }}</span>
+            <div>
+              <h3>{{ step.title }}</h3>
+              <p>{{ step.detail }}</p>
+              {% if step.tip %}<p class="steplist__tip">{{ step.tip }}</p>{% endif %}
+            </div>
+          </li>
+        {% endfor %}
+      </ol>
+    </section>
+
+    {# --- Full explanation --- #}
+    {% for section in guide.sections %}
+      <section class="prose">
+        <h2>{{ section.heading }}</h2>
+        {% for para in section.paragraphs %}<p>{{ para }}</p>{% endfor %}
+      </section>
+    {% endfor %}
+
+    {# --- FAQs. <details> needs no JavaScript. --- #}
+    {% if guide.faqs %}
+      <section class="prose faqs">
+        <h2>Common questions</h2>
+        {% for faq in guide.faqs %}
+          <details class="faq">
+            <summary>{{ faq.q }}</summary>
+            <p>{{ faq.a }}</p>
+          </details>
+        {% endfor %}
+      </section>
+    {% endif %}
+
+    {# --- Conversion block --- #}
+    <aside class="article__cta">
+      <div>
+        <p class="eyebrow">Make content like this?</p>
+        <h3>We pay creators to make these guides into video.</h3>
+        <p>If you make beauty content, join the cast. Free, always.</p>
+      </div>
+      <a class="btn btn--primary" href="{{ url_for('main.apply_page') }}">Join the cast</a>
+    </aside>
+
+    {# --- Related --- #}
+    {% if related %}
+      <section class="article__related">
+        <h2>Read next</h2>
+        <div class="guides">
+          {% for other in related %}
+            <a class="guide tilt" href="{{ url_for('main.guide', slug=other.slug) }}">
+              <div class="guide__top">
+                <span class="guide__cat">{{ other.category }}</span>
+                <span class="guide__time">{{ other.read_time }} read</span>
+              </div>
+              <h3>{{ other.title }}</h3>
+              <p>{{ other.excerpt }}</p>
+              <span class="guide__more">Read the guide &rarr;</span>
+            </a>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+  </div>
+</article>
+
+{# --- Structured data. This is what can surface your steps and
+       questions directly in Google results. --- #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HowTo",
+      "name": {{ guide.title | tojson }},
+      "description": {{ guide.meta_description | tojson }},
+      "totalTime": "PT{{ guide.read_time | replace(' min','') }}M",
+      "step": [
+        {% for step in guide.steps %}
+        {
+          "@type": "HowToStep",
+          "position": {{ loop.index }},
+          "name": {{ step.title | tojson }},
+          "text": {{ step.detail | tojson }}
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for faq in guide.faqs %}
+        {
+          "@type": "Question",
+          "name": {{ faq.q | tojson }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ faq.a | tojson }} }
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",
+          "item": {{ url_for('main.index', _external=True) | tojson }} },
+        { "@type": "ListItem", "position": 2, "name": "Beauty Room",
+          "item": {{ url_for('main.beauty_room', _external=True) | tojson }} },
+        { "@type": "ListItem", "position": 3, "name": {{ guide.title | tojson }} }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}

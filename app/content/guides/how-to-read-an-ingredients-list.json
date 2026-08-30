@@ -1,0 +1,80 @@
+{
+  "slug": "how-to-read-an-ingredients-list",
+  "category": "Makeup",
+  "title": "How to read an ingredients list without a chemistry degree",
+  "meta_description": "Ingredient lists follow rules that make them readable once you know them. What the order means, where the 1% line sits, and which marketing claims mean nothing.",
+  "excerpt": "The first five ingredients are most of the bottle. Everything after the 1% line is listed in any order the brand likes.",
+  "read_time": "6 min",
+  "updated": "2026-08-30",
+  "chips": [
+    "Top five",
+    "Find the actives",
+    "Check the order",
+    "Ignore the claims"
+  ],
+  "intro": "Ingredient lists look deliberately impenetrable, but they follow a standard called INCI, and the rules are simple enough to learn in a few minutes. Once you know them you can tell roughly what is in a product before you buy it.",
+  "sections": [
+    {
+      "heading": "Order tells you concentration, until it does not",
+      "paragraphs": [
+        "Ingredients are listed in descending order of concentration — until you reach ingredients present at 1% or less. Below that line, a brand may list them in any order it chooses.",
+        "This is the single most useful thing to know, because it means a hero active listed near the end could be at 0.9% or 0.01% and the label reads identically."
+      ]
+    },
+    {
+      "heading": "Finding the 1% line",
+      "paragraphs": [
+        "There is no marker, but there is a reliable clue. Preservatives, fragrance and colourants are almost always used at well under 1%. Once you spot phenoxyethanol, sodium benzoate, parfum or a colour index number, everything from roughly that point on is a trace amount.",
+        "So if the ingredient the whole product is marketed on appears after that point, you are looking at a very small quantity of it."
+      ]
+    },
+    {
+      "heading": "Claims that mean nothing",
+      "paragraphs": [
+        "\"Chemical-free\" is meaningless — water is a chemical. \"Clean\" and \"non-toxic\" have no legal definition in most markets and no agreed standard behind them.",
+        "\"Dermatologist tested\" tells you a test happened. It does not tell you the result. \"Hypoallergenic\" is similarly unregulated in many places.",
+        "None of this means a product is bad. It means the front of the pack is marketing and the back of the pack is information."
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Read the first five",
+      "detail": "These are the bulk of the formula. Water, an emollient, a humectant and a thickener is a normal opening for a moisturiser.",
+      "tip": "If the product is sold on one ingredient, check whether it is in this group."
+    },
+    {
+      "title": "Locate the actives",
+      "detail": "Find the ingredient the marketing is about and see where it sits relative to the preservatives.",
+      "tip": "Sunscreens are different — active filters are declared separately with exact percentages."
+    },
+    {
+      "title": "Spot the 1% line",
+      "detail": "Preservatives, parfum and CI colour numbers mark roughly where trace amounts begin.",
+      "tip": "Fragrance high in a list is common in perfumed body products and worth noting if you are sensitive."
+    },
+    {
+      "title": "Ignore the front of the pack",
+      "detail": "Decide from the ingredient list and the price, not the claims.",
+      "tip": "An expensive product with a good formula and a cheap one with the same first eight ingredients often perform similarly."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Are parabens and silicones dangerous?",
+      "a": "Both are permitted at regulated concentrations and are among the more studied cosmetic ingredients. Avoiding them is a personal preference rather than a safety requirement, and 'free from' labelling is a marketing decision."
+    },
+    {
+      "q": "Why do the same products have different lists in different countries?",
+      "a": "Regulations differ. The EU restricts more ingredients than the US, and colourant naming conventions vary, so brands reformulate for each market."
+    },
+    {
+      "q": "Does a shorter ingredient list mean a better product?",
+      "a": "No. Short lists are easier to read, not inherently better formulated. Some very effective products are long because they include stabilisers that make the actives work."
+    }
+  ],
+  "related": [
+    "what-order-to-apply-skincare",
+    "why-press-on-nails-pop-off"
+  ]
+}

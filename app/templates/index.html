@@ -115,11 +115,13 @@
       <p class="eyebrow">{{ site.beauty_room.eyebrow }}</p>
       <h2>{{ site.beauty_room.heading }}</h2>
       <p class="lede" style="margin-top:12px">{{ site.beauty_room.intro }}</p>
+      <a class="btn btn--ghost btn--sm" style="margin-top:18px" href="{{ url_for('main.beauty_room') }}">{{ site.beauty_room.cta }} &rarr;</a>
     </div>
 
     <div class="guides">
-      {% for article in site.beauty_room.articles %}
-        <article class="guide tilt reveal" data-delay="{{ loop.index }}">
+      {% for article in guides[:4] %}
+        <a class="guide tilt reveal" data-delay="{{ loop.index }}"
+           href="{{ url_for('main.guide', slug=article.slug) }}">
           <div class="guide__top">
             <span class="guide__cat">{{ article.category }}</span>
             <span class="guide__time">{{ article.read_time }} read</span>
@@ -127,12 +129,13 @@
           <h3>{{ article.title }}</h3>
           <p>{{ article.excerpt }}</p>
           <div class="steps">
-            {% for step in article.steps %}
-              <span class="step">{{ step }}</span>
+            {% for chip in article.chips %}
+              <span class="step">{{ chip }}</span>
               {% if not loop.last %}<span class="step-arrow">&rarr;</span>{% endif %}
             {% endfor %}
           </div>
-        </article>
+          <span class="guide__more">Read the guide &rarr;</span>
+        </a>
       {% endfor %}
     </div>
 

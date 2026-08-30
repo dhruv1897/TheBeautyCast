@@ -1,0 +1,79 @@
+{
+  "slug": "what-order-to-apply-skincare",
+  "category": "Skincare",
+  "title": "What order to apply your skincare in",
+  "meta_description": "The correct order for a skincare routine, morning and night, and the one rule that makes it easy to remember: thinnest to thickest.",
+  "excerpt": "Thinnest to thickest. That single rule fixes most routines, and it explains why your serum stopped working when you changed the order.",
+  "read_time": "4 min",
+  "updated": "2026-08-30",
+  "chips": [
+    "Cleanse",
+    "Treat",
+    "Moisturise",
+    "Protect"
+  ],
+  "intro": "Most skincare routines fail on sequence, not on products. If a thick cream goes on before a watery serum, the serum has to push through it, and much of what you paid for never reaches your skin. The fix is one rule you can apply to any product you own.",
+  "sections": [
+    {
+      "heading": "The rule: thinnest to thickest",
+      "paragraphs": [
+        "Order your products by how runny they are. Water-like goes first, cream goes last. That is genuinely most of it — you do not need to memorise a product hierarchy, you just need to look at the texture.",
+        "This works because lighter, water-based formulas are absorbed through skin that has nothing sitting on top of it. Heavier products contain oils and film-formers that are designed to sit on the surface and slow water loss. Put the barrier down first and you have blocked everything that comes after."
+      ]
+    },
+    {
+      "heading": "Where sunscreen fits",
+      "paragraphs": [
+        "Sunscreen is the exception to thinnest-to-thickest. It always goes last in the morning, regardless of texture, because it needs to form an unbroken film on the outermost layer. Anything applied over it disturbs that film.",
+        "If you wear makeup, sunscreen goes on after skincare and before foundation."
+      ]
+    },
+    {
+      "heading": "Morning and night are different jobs",
+      "paragraphs": [
+        "Morning is protection. Night is repair. That is why retinoids and most exfoliating acids belong in the evening — sunlight degrades some of them, and skin does most of its repair work overnight.",
+        "You do not need every step twice a day. A morning routine of cleanse, moisturise, sunscreen is a complete routine."
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Cleanse",
+      "detail": "Removes the day. In the morning a rinse or a gentle cleanser is enough; at night, cleanse properly if you wore makeup or sunscreen.",
+      "tip": "If your skin feels tight afterwards, the cleanser is too strong."
+    },
+    {
+      "title": "Treat",
+      "detail": "Serums and actives go here, on bare skin, thinnest first. Vitamin C in the morning, retinoids or acids at night.",
+      "tip": "Introduce one new active at a time, and give it two weeks before judging it."
+    },
+    {
+      "title": "Moisturise",
+      "detail": "Seals in what you just applied and slows water loss. Every skin type needs this, including oily skin.",
+      "tip": "Apply to slightly damp skin — it holds more water that way."
+    },
+    {
+      "title": "Protect",
+      "detail": "Sunscreen, mornings only, always last. Roughly a quarter teaspoon for the face alone.",
+      "tip": "Most people apply about half what they need. Be more generous than feels right."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do I need to wait between steps?",
+      "a": "Usually no. Apply the next product once the last one is no longer wet on the surface. The one exception is strong retinoids, where some people find waiting until skin is fully dry reduces irritation."
+    },
+    {
+      "q": "Can I use retinol and acids on the same night?",
+      "a": "If you are new to either, no. Both increase turnover and using them together is the most common cause of a damaged barrier. Alternate nights until you know how your skin responds."
+    },
+    {
+      "q": "Does the order still matter if I only use three products?",
+      "a": "Yes, and with three products it is even easier — cleanse, moisturise, sunscreen, in that order."
+    }
+  ],
+  "related": [
+    "how-to-read-an-ingredients-list",
+    "does-heat-protectant-work"
+  ]
+}
