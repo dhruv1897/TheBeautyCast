@@ -3,8 +3,7 @@
     <div class="footer__in">
       <div>
         <a class="logo" href="{{ url_for('main.index') }}">
-          <img class="on-light" src="{{ url_for('static', filename='img/brand/logo-light-bg.svg') }}" alt="{{ site.brand.name }}">
-          <img class="on-dark"  src="{{ url_for('static', filename='img/brand/logo-dark-bg.svg') }}"  alt="{{ site.brand.name }}">
+          <img src="{{ url_for('static', filename='img/brand/logo-light-bg.svg') }}" alt="{{ site.brand.name }}">
         </a>
         <p class="footer__note">{{ site.footer.note }}</p>
       </div>

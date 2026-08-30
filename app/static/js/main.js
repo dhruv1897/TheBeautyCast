@@ -17,32 +17,7 @@
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------------------------------------------------------------
-     1. THEME TOGGLE
-     The theme is applied in <head> before paint (see base.html) so
-     there is no white flash for dark-mode visitors. This only wires
-     up the button.
-     --------------------------------------------------------------- */
-  var toggle = document.querySelector("[data-theme-toggle]");
-
-  if (toggle) {
-    toggle.addEventListener("click", function () {
-      var current = document.documentElement.getAttribute("data-theme");
-      var next = current === "dark" ? "light" : "dark";
-
-      document.documentElement.setAttribute("data-theme", next);
-      toggle.setAttribute("aria-label", next === "dark" ? "Switch to light mode" : "Switch to dark mode");
-
-      try {
-        localStorage.setItem("bc-theme", next);
-      } catch (e) {
-        /* Private browsing blocks storage. The toggle still works,
-           it just will not be remembered. */
-      }
-    });
-  }
-
-  /* ---------------------------------------------------------------
-     2. POINTER PARALLAX
+     1. POINTER PARALLAX
      Each ring layer has data-depth. Higher depth = moves further,
      which reads as closer to the viewer.
      --------------------------------------------------------------- */
@@ -84,7 +59,7 @@
   }
 
   /* ---------------------------------------------------------------
-     3. SCROLL REVEAL
+     2. SCROLL REVEAL
      --------------------------------------------------------------- */
   var revealables = document.querySelectorAll(".reveal");
 
@@ -106,7 +81,7 @@
   }
 
   /* ---------------------------------------------------------------
-     4. 3D TILT ON CARDS
+     3. 3D TILT ON CARDS
      Mouse only. Touch devices skip this entirely.
      --------------------------------------------------------------- */
   if (!reduceMotion && window.matchMedia("(hover: hover)").matches) {
@@ -128,7 +103,7 @@
   }
 
   /* ---------------------------------------------------------------
-     5. FORM HELPERS
+     4. FORM HELPERS
      Preselect a package if the visitor clicked one, and stop double
      submissions on slow connections.
      --------------------------------------------------------------- */

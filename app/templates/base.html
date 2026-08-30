@@ -7,25 +7,11 @@
      3. Add a route in app/controllers/main.py
    ------------------------------------------------------------------ #}
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  {# --- Theme applied BEFORE paint. Without this, dark-mode visitors
-         get a white flash on every page load. --- #}
-  <script>
-    (function () {
-      try {
-        var saved = localStorage.getItem("bc-theme");
-        if (saved) {
-          document.documentElement.setAttribute("data-theme", saved);
-        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          document.documentElement.setAttribute("data-theme", "dark");
-        }
-      } catch (e) {}
-    })();
-  </script>
 
   <title>{% block title %}{{ site.brand.name }} — {{ site.brand.tagline }}{% endblock %}</title>
   <meta name="description" content="{% block description %}{{ site.hero.subhead }}{% endblock %}">
